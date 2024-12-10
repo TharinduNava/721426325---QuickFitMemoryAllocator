@@ -1,5 +1,3 @@
-# 721426325---QuickFitMemoryAllocator
-
 # Quick Fit Memory Allocator
 
 ## Project Overview
