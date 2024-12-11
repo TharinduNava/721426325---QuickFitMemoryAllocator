@@ -1,5 +1,9 @@
 # Quick Fit Memory Allocator
 
+Registration No.    -    721426325
+Student ID          -    s92066325
+Name                -    K.A.T.N. Hettige
+
 ## Project Overview
 
 The **Quick Fit Memory Allocator** simulates memory allocation and deallocation using the Quick Fit algorithm. This algorithm is designed to efficiently handle fixed-size memory blocks with low to moderate fragmentation. It is best suited for applications that require frequent allocations of fixed sizes.
