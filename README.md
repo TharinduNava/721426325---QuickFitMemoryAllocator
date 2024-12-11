@@ -1,7 +1,9 @@
 # Quick Fit Memory Allocator
 
 Registration No.    -    721426325
+
 Student ID          -    s92066325
+
 Name                -    K.A.T.N. Hettige
 
 ## Project Overview
