@@ -28,70 +28,198 @@ This program demonstrates the process of allocating and freeing memory in a syst
 
 ## Example Output
 
+### Initial Memory Status
+```
 ==========================================
-              MEMORY STATUS              
+              MEMORY STATUS
 ==========================================
-Small List:  [5, 10, 15]
-Medium List: [20, 30, 40]
-Large List:  [50, 70, 100]
+Small Memory Capacity List:  [5, 10, 15]
+Medium Memory Capacity List: [20, 30, 40]
+Large Memory Capacity List:  [50, 70, 100]
 ==========================================
+```
 
+### Allocating 1 Byte
+```
 ==========================================
 Allocating 1 bytes...
 ------------------------------------------
 Allocated 1 bytes from the small list (block size: 5). Remaining: 4 bytes.
 ------------------------------------------
+==========================================
+              MEMORY STATUS
+==========================================
+Small Memory Capacity List:  [4, 10, 15]
+Medium Memory Capacity List: [20, 30, 40]
+Large Memory Capacity List:  [50, 70, 100]
+==========================================
+```
 
-==========================================
-              MEMORY STATUS              
-==========================================
-Small List:  [4, 10, 15]
-Medium List: [20, 30, 40]
-Large List:  [50, 70, 100]
-==========================================
-
+### Allocating 5 Bytes
+```
 ==========================================
 Allocating 5 bytes...
 ------------------------------------------
 Allocated 5 bytes from the small list (block size: 10). Remaining: 5 bytes.
 ------------------------------------------
+==========================================
+              MEMORY STATUS
+==========================================
+Small Memory Capacity List:  [4, 5, 15]
+Medium Memory Capacity List: [20, 30, 40]
+Large Memory Capacity List:  [50, 70, 100]
+==========================================
+```
 
-==========================================
-              MEMORY STATUS              
-==========================================
-Small List:  [4, 5, 15]
-Medium List: [20, 30, 40]
-Large List:  [50, 70, 100]
-==========================================
-
+### Allocating 30 Bytes
+```
 ==========================================
 Allocating 30 bytes...
 ------------------------------------------
-Allocated 30 bytes from the medium list (block size: 40). Remaining: 10 bytes.
+Allocated 30 bytes from the medium list (block size: 30). Remaining: 0 bytes.
 ------------------------------------------
+==========================================
+              MEMORY STATUS
+==========================================
+Small Memory Capacity List:  [4, 5, 15]
+Medium Memory Capacity List: [20, 0, 40]
+Large Memory Capacity List:  [50, 70, 100]
+==========================================
+```
 
-==========================================
-              MEMORY STATUS              
-==========================================
-Small List:  [4, 5, 15]
-Medium List: [20, 30, 10]
-Large List:  [50, 70, 100]
-==========================================
-
+### Freeing 1 Byte
+```
 ==========================================
 Freeing 1 bytes...
 ------------------------------------------
 Freed 1 bytes and added it back to the block in the small list.
 ------------------------------------------
-
 ==========================================
-              MEMORY STATUS              
+              MEMORY STATUS
 ==========================================
-Small List:  [5, 5, 15]
-Medium List: [20, 30, 10]
-Large List:  [50, 70, 100]
+Small Memory Capacity List:  [5, 5, 15]
+Medium Memory Capacity List: [20, 0, 40]
+Large Memory Capacity List:  [50, 70, 100]
 ==========================================
+```
 
-...
+### Freeing 5 Bytes
+```
+==========================================
+Freeing 5 bytes...
+------------------------------------------
+Freed 5 bytes and added it back to the block in the small list.
+------------------------------------------
+==========================================
+              MEMORY STATUS
+==========================================
+Small Memory Capacity List:  [5, 10, 15]
+Medium Memory Capacity List: [20, 0, 40]
+Large Memory Capacity List:  [50, 70, 100]
+==========================================
+```
 
-(And so on for each allocation and free operation.)
+### Freeing 30 Bytes
+```
+==========================================
+Freeing 30 bytes...
+------------------------------------------
+Freed 30 bytes and added it back to the block in the medium list.
+------------------------------------------
+==========================================
+              MEMORY STATUS
+==========================================
+Small Memory Capacity List:  [5, 10, 15]
+Medium Memory Capacity List: [20, 30, 40]
+Large Memory Capacity List:  [50, 70, 100]
+==========================================
+```
+
+### Allocating 10 Bytes
+```
+==========================================
+Allocating 10 bytes...
+------------------------------------------
+Allocated 10 bytes from the small list (block size: 10). Remaining: 0 bytes.
+------------------------------------------
+==========================================
+              MEMORY STATUS
+==========================================
+Small Memory Capacity List:  [5, 0, 15]
+Medium Memory Capacity List: [20, 30, 40]
+Large Memory Capacity List:  [50, 70, 100]
+==========================================
+```
+
+### Allocating 50 Bytes
+```
+==========================================
+Allocating 50 bytes...
+------------------------------------------
+Allocated 50 bytes from the large list (block size: 50). Remaining: 0 bytes.
+------------------------------------------
+==========================================
+              MEMORY STATUS
+==========================================
+Small Memory Capacity List:  [5, 0, 15]
+Medium Memory Capacity List: [20, 30, 40]
+Large Memory Capacity List:  [0, 70, 100]
+==========================================
+```
+
+### Freeing 10 Bytes
+```
+==========================================
+Freeing 10 bytes...
+------------------------------------------
+Freed 10 bytes and added it back to the block in the small list.
+------------------------------------------
+==========================================
+              MEMORY STATUS
+==========================================
+Small Memory Capacity List:  [5, 10, 15]
+Medium Memory Capacity List: [20, 30, 40]
+Large Memory Capacity List:  [0, 70, 100]
+==========================================
+```
+
+### Freeing 50 Bytes
+```
+==========================================
+Freeing 50 bytes...
+------------------------------------------
+Freed 50 bytes and added it back to the block in the large list.
+------------------------------------------
+==========================================
+              MEMORY STATUS
+==========================================
+Small Memory Capacity List:  [5, 10, 15]
+Medium Memory Capacity List: [20, 30, 40]
+Large Memory Capacity List:  [50, 70, 100]
+==========================================
+```
+
+### Allocating 150 Bytes
+```
+==========================================
+Allocating 150 bytes...
+------------------------------------------
+Error: Requested size of 150 bytes exceeds the largest available block (100 bytes).
+------------------------------------------
+==========================================
+              MEMORY STATUS
+==========================================
+Small Memory Capacity List:  [5, 10, 15]
+Medium Memory Capacity List: [20, 30, 40]
+Large Memory Capacity List:  [50, 70, 100]
+==========================================
+```
+
+### Freeing 15 Bytes
+```
+==========================================
+Freeing 15 bytes...
+------------------------------------------
+Unable to free 15 bytes. It may not have been allocated.
+------------------------------------------
+```
